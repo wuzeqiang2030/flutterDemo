@@ -18,4 +18,16 @@ class GlobalConfig{
   ///
   static double BottomBarTextSize = 14;
 
+  ///侧边栏
+  static String email = "m13611280624_1@163.com";
+  static String authorNice = "Array 佳衡";
+  static String drawList1="福利";
+  static String drawList2="搜索";
+  static String drawList3="历史";
+  static String drawList4="分享";
+
+
+  ///登录
+  static String welfare = "福利";
+
 }
