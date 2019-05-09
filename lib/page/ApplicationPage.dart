@@ -12,14 +12,15 @@ class ApplicationPage extends StatefulWidget{
   _ApplicationPageAtate createState() => _ApplicationPageAtate();
 
 }
+///写入底部导航 BottomNavigationBar
 class _ApplicationPageAtate extends State<ApplicationPage>{
 
   int page = 1;
   String title = GlobalConfig.homeTab;
   PageController pageController;
+
   //定义底部导航项目
   final List<BottomNavigationBarItem> _bottomTabs = <BottomNavigationBarItem>[
-
     new BottomNavigationBarItem(
         icon: Icon(Icons.tune),
         title: Text(GlobalConfig.classyTab,
@@ -37,21 +38,23 @@ class _ApplicationPageAtate extends State<ApplicationPage>{
         backgroundColor: GlobalConfig.colorButtonText),
   ];
 
+  //State 中启动周期
   @override
   void initState() {
     super.initState();
     pageController = new PageController(initialPage: this.page);
   }
+
+  //State 中关闭周期
   @override
   void dispose() {
     pageController.dispose();
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    // MaterialApp  APP创建
     return MaterialApp(
       theme: new ThemeData(primaryColor: GlobalConfig.colorPrimaryDark),
       home: Scaffold(
@@ -64,6 +67,7 @@ class _ApplicationPageAtate extends State<ApplicationPage>{
           controller: pageController,
           onPageChanged: onPageChanged,
         ),
+        ///bottomNavigationBar 是一个 Widget
         bottomNavigationBar: new BottomNavigationBar(
             items: _bottomTabs,
             currentIndex: page,
@@ -79,6 +83,7 @@ class _ApplicationPageAtate extends State<ApplicationPage>{
     pageController.animateToPage(value, duration: const Duration(milliseconds: 300), curve: Curves.ease);
   }
 
+  //setState 当前Page页
   void onPageChanged(int page) {
     setState(() {
       this.page = page;
